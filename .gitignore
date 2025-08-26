@@ -1,0 +1,48 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Visual Studio / MonoDevelop generated files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Crash reports
+sysinfo.txt
+*.stacktrace
+
+# Auto-generated lightmaps
+LightmapSnapshot.asset
+
+# Cache files
+*.cache
+
+# Unity Asset Store tools
+Assets/AssetStoreTools*
+
+# Exclude Blender backup files
+*.blend1
+
+# Exclude temporary files created by IDEs
+.idea/
+.vscode/
+*.swp
+*.bak
+*.orig
+*.tmp
