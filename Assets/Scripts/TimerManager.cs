@@ -2,18 +2,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-public class CountdownManager : MonoBehaviour
+public class TimerManager : MonoBehaviour
 {
     [Header("Countdown Setup")]
     public Text countdownText;
     public float countdownDuration = 3f;
+    
+    [Header("Timer Setup")]
+    public Text timerText;
     
     [Header("Audio (Optional)")]
     public AudioSource audioSource;
     public AudioClip countBeep;
     public AudioClip goBeep;
     
-    private static CountdownManager instance;
+    private static TimerManager instance;
+    private Car playerCar;
+    private float currentTime = 0f;
     private bool raceStarted = false;
     
     public static bool RaceStarted => instance != null && instance.raceStarted;
@@ -26,18 +31,32 @@ public class CountdownManager : MonoBehaviour
             return;
         }
         instance = this;
+        
+        playerCar = FindFirstObjectByType<Player>()?.car;
     }
     
     void Start()
     {
         // Auto-find UI components if not assigned
         if (countdownText == null)
-            countdownText = FindFirstObjectByType<Text>();
+            countdownText = GameObject.Find("CountdownText").GetComponent<Text>();
             
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
             
+        if (timerText == null)
+            timerText = GameObject.Find("TimerText").GetComponent<Text>();
+            
         StartCountdown();
+    }
+    
+    void Update()
+    {
+        if (raceStarted)
+        {
+            currentTime += Time.deltaTime;
+            timerText.text = currentTime.ToString("F2");
+        }
     }
     
     public void StartCountdown()

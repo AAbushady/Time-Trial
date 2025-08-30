@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         if (car == null) return;
         
         // Check if race has started - no input until countdown finishes!
-        if (!CountdownManager.RaceStarted)
+        if (!TimerManager.RaceStarted)
         {
             car.SetInputs(0, 0); // Lock all movement
             return;
